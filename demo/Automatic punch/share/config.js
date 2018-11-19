@@ -1,4 +1,7 @@
 
+const logInURL = "http://193.112.250.216:9999/mobile_portal/api/verification/login";
+const signInURL = "http://193.112.250.216:9999/mobile_portal/seeyon/rest/attendance/save";
+
 const config = {
     host: 'smtp.163.com',
     port: 25,
@@ -34,5 +37,7 @@ const signInBody = {
 module.exports = {
     config,
     loginBody,
-    signInBody
+    signInBody,
+    logInURL,
+    signInURL
 };

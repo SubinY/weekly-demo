@@ -3,11 +3,11 @@ const api = require('./services/api');
 const globalConfig = require('./share/config');
 const HttpProxyAgent = require('http-proxy-agent'); // 为了fiddler能拦截，必须在node设置代理
 
-let proxy ='http://127.0.0.1:8888';
+let proxy ='http://127.0.0.1:8888'; // fiddler代理端口
 const agent = new HttpProxyAgent(proxy);
 
 function logInFn() {
-    const logInURL = "http://193.112.250.216:9999/mobile_portal/api/verification/login";
+    const logInURL = globalConfig.urlConfig;
     const config = {
         method: 'POST',
         headers: new Headers({
@@ -34,7 +34,7 @@ function logInFn() {
  * @param {*} type 1——签到，2——签退
  */
 function signInFn(token, type) {
-    const signInURL = "http://193.112.250.216:9999/mobile_portal/seeyon/rest/attendance/save"; // 还有补签接口，但意义不大
+    const signInURL = globalConfig.urlConfig; // 还有补签接口，但意义不大
     const config = {
         method: 'POST',
         headers: new Headers({
