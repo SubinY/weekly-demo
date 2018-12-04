@@ -1,0 +1,83 @@
+<%- include('common/header') %>
+
+<style>
+    .content {
+        width: 80%;
+        margin: 20px auto;
+    }
+
+    .btn-wrap {
+        width: 100%;
+    }
+
+    .btn-wrap button {
+        width: 50%;
+        float: left;
+        margin-left: 0 !important;
+    }
+
+    .layui-input-block {
+        margin-left: 0;
+    }
+
+    .btn-search {
+        position: relative;
+        left: 50%;
+        width: 100px;
+        margin-left: -50px;
+    }
+
+    #afterTransfer {
+        height: 300px;
+    }
+</style>
+
+<div class="content">
+    <div class="btn-wrap">
+        <button class="layui-btn layui-btn-lg" onClick="changeMode('text')">文本转换</button>
+        <button class="layui-btn layui-btn-primary layui-btn-lg" onClick="changeMode('voice')">语音转换</button>
+    </div>
+    <div class="layui-input-block">
+        <textarea id="beforeTransfer" placeholder="请输入内容" class="layui-textarea"></textarea>
+    </div>
+
+    <hr class="layui-bg-green">
+    <button class="layui-btn layui-btn-radius btn-search" onClick="transfer()">查询</button>
+    <hr class="layui-bg-green">
+
+    <div class="layui-input-block">
+        <textarea id="afterTransfer" placeholder="转换结果" class="layui-textarea" readonly></textarea>
+    </div>
+</div>
+
+<script>
+    function changeMode(mode) {
+        alert('目前仅支持文本转换');
+    }
+
+    function formatText(text) {
+        const regex = /[,，\s]{1,}/g;
+        return text.trim().replace(regex, ',');
+    }
+
+    function transfer() {
+        const address = document.querySelector('#beforeTransfer').value;
+        const afterTransferV = document.querySelector('#afterTransfer');
+        const result = formatText(address);
+        $.ajax({
+            type: 'GET',
+            url: `/search/${result}`,
+            success: function (data) {
+                if (data.code) {
+                    afterTransferV.innerText = data.result;
+                }
+            },
+            error: function (err) {
+                alert('转换失败');
+            }
+        });
+
+    }
+</script>
+
+<%- include('common/footer') %>
