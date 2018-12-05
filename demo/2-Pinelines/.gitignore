@@ -1,10 +1,8 @@
 
 # dependencies
-node_modules
+/node_modules
 node_modules.zip
 node_modules.rar
-*./node_modules/*
-*.package-lock.json
 
 # IDEs and editors
 /.idea
@@ -14,6 +12,5 @@ node_modules.rar
 *.launch
 .settings/
 *.sublime-workspace
-/.vscode
 
 /share/*.secret.js
