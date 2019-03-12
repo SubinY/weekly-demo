@@ -1,0 +1,26 @@
+{
+   "apps:" : [{
+      "name" : "Website",
+      "script" : "index.js",
+      "env": {
+        "COMMON_VARIABLE": "true"
+      },
+      "env_production": {
+        "NODE_ENV": "production"
+      }
+   }],
+   "deploy" : {
+     "production" : {
+       "user" : "subin",
+       "host" : ["47.107.248.45"],
+       "port" : "22",
+       "ref"  : "origin/master",
+       "repo"  : "https://github.com/SubinY/deployment.git",
+       "path" : "/www/website/production",
+       "ssh_options" : "StrictHostKeyChecking=no",
+       "env": {
+        "NODE_ENV": "production"
+       }
+      }
+   }
+}

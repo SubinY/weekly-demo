@@ -1,0 +1,19 @@
+{
+  "name": "batch-import-altImage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "author": "subin",
+  "license": "ISC",
+  "dependencies": {
+    "base64-url": "^2.2.0",
+    "es6-promise": "^4.2.4",
+    "fs-extra": "^7.0.1",
+    "isomorphic-fetch": "^2.2.1",
+    "request": "^2.88.0"
+  }
+}
